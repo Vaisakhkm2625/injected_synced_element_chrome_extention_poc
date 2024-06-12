@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "injected_synced_element",
+    "version": "1.0",
+    "description": "testing out injected element sync",
+    "icons": {
+        "48": "icons/border-48.png"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "contextMenus",
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.servicenow.com/*",
+                "*://*.service-now.com/*",
+                "*://*.google.com/*"
+            ],
+            "css": [
+                "styles/injected_style.css"
+            ],
+            "js": [
+                "scripts/inject_element.js"
+            ]
+        }
+    ]
+}
